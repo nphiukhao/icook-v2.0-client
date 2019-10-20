@@ -1,0 +1,28 @@
+
+.add-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    text-align: left;
+}
+
+.field {
+    display: block;
+    width: 100%;
+}
+.split{
+    display: flex;
+    flex-direction: row;
+}
+
+.recipe-minutes, .recipe-title{
+    width: 50%;
+}
+
+.recipe-minutes, .recipe-title, .recipe-ingre, .recipe-instr{
+    margin-top: 20px;
+    padding: 10px;
+}

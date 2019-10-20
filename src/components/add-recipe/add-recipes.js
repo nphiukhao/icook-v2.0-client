@@ -1,29 +1,103 @@
 import React, { Component } from 'react';
+import './add-recipe.css'
 
 
 export default class AddRecipeForm extends Component {
 
-    render() {
-        return (
-            <section> 
-                <form onSubmit={console.log('submited')}>
-                    <label id='recipe-title'>Recipe Title:
-                      <input name= 'recipe-title' type='text'></input>
-                    </label>
-                    <label id='recipe-desc'>Description:
-                      <input name= 'recipe-desc' type='text'></input>
-                    </label>
+  state = {
+    newRecipe: {
+      title: '',
+      minutes: '',
+      ingredient: '',
+      instructions: ''
 
-                    <label id='recipe-ingre'>Ingredients Needed:
-                      <input name= 'recipe-ingre' type='text'></input>
-                    </label>
-                    <label id='recipe-instr'>Instructions:
-                      <input name= 'recipe-instr' type='text'></input>
-                    </label>
-                    <button className='addButton' type='submit'>Add Recipe</button>
-                    
-                </form>
-            </section>
-        )
     }
+  }
+
+
+  updateNewRecipe = (e, inputName) => {
+    let newRecipe = { ...this.state.newRecipe, [inputName]: e.target.value}
+    this.setState({newRecipe})
+  }
+
+  onSubmitHandle = (e) => {
+    console.log('handling submit')
+    e.preventDefault()
+
+    const data = {
+      title: this.state.newRecipe.title,
+      minutes: this.state.newRecipe.minutes,
+      ingredient: this.state.newRecipe.ingredient,
+      instructions: this.state.newRecipe.instructions
+    }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data)
+
+    }
+    fetch('http://localhost:8000/add', options)
+      .then(res => {
+        if(res.ok) {
+          return res.json()
+        }
+      
+        throw new Error('something went wrong')
+        
+      })
+      .then(result => console.log(result))
+  }
+
+  render() {
+    console.log(this.state)
+    return (
+      <section className='form-container'>
+        <form className='add-form' onSubmit={e => this.onSubmitHandle(e)}>
+          <div className='split'>
+            <div className='recipe-title'>
+              <label htmlFor='recipe-title'>Recipe Title: </label>
+              <input className='title field' id='recipe-title' name='recipe-title' type='text' required placeholder='Garlic Butter Steak'
+                value={this.state.newRecipe.title} 
+                onChange={e => {
+                  this.updateNewRecipe(e, 'title')
+                 }}
+              ></input>
+            </div>
+            <div className='recipe-minutes'>
+              <label htmlFor='recipe-minutes'>Total Cooking Time (minutes):</label>
+              <input className='minutes field' id='recipe-minutes' name='recipe-minutes' type='text' required placeholder='45'
+                 value={this.state.newRecipe.minutes} 
+                 onChange={e => {
+                  this.updateNewRecipe(e, 'minutes')
+                }}
+              ></input>
+            </div>
+          </div>
+          <div className='recipe-ingre'>
+            <label htmlFor='recipe-ingre'>Ingredients Needed:</label>
+            <input className='ingre field' id='recipe-ingre' name='recipe-ingre' type='text' required placeholder='fresh parsley, minced garlic, soy sauce, flat iron steak etc.'
+               value={this.state.newRecipe.ingredient} 
+               onChange={e => {
+                this.updateNewRecipe(e, 'ingredient')
+               }}
+            ></input>
+          </div>
+          <div className='recipe-instr'>
+            <label htmlFor='recipe-instr'>Instructions:</label>
+            <input className='instr field' id='recipe-instr' name='recipe-instr' type='text' required placeholder='Mix 1 tablespoon butter, parsley, garlic and soy sauce. Sprinkle steak with salt and pepper...'
+               value={this.state.newRecipe.instructions} 
+               onChange={e => {
+                 this.updateNewRecipe(e, 'instructions');
+               }}
+            ></input>
+          </div>
+          <button className='addButton' type='submit'>Add Recipe</button>
+
+        </form>
+      </section>
+    )
+  }
 }

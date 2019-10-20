@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
+import { RecipeProvider } from './context/RecipeContext';
 
 ReactDOM.render(
-    <BrowserRouter> 
-        <App />
+    <BrowserRouter>
+        <RecipeProvider>
+            <App />
+        </RecipeProvider>
     </BrowserRouter>
-    
+
 
     , document.getElementById('root')
 );
