@@ -1,0 +1,18 @@
+.recipeM-container p {
+    font-family: 'Raleway', sans-serif;
+    padding: 5px 50px;
+    font-size: 18px;
+    color: black;
+    margin: 10px 0;
+}
+
+.recipeM-container span{
+    font-family: 'Vidaloka', serif;
+    font-size: 30px;
+    color: white;
+}
+
+.recipeM-container h2 {
+    margin-top: 10px;
+    font-size: 3.2em;
+}

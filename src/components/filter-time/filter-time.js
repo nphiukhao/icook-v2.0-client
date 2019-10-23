@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Recipelist from '../filter-all/recipe-list'
 import RecipeContext from '../../context/RecipeContext'
 import RecipeApiService from '../../services/RecipeServices'
+import './filter-time.css'
 
 export default class FilterTime extends Component {
 
@@ -49,20 +50,20 @@ export default class FilterTime extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Select cooking time</h2>
-                <select 
-                    value={this.state.selectedVal}
-                    onChange={this.handleSelected}
-                >
-                    <option value=''>Select Minutes</option>
-                    <option value='25'>less than 25 mins</option>
-                    <option value='35'>25-35 mins</option>
-                    <option value='45'>35-45 mins</option>
-                    <option value='55'>45-55 mins</option>
-                </select>
-                <button onClick={this.getResult}>GO</button>
-
+            <div className='filter-time'>
+                <div className='select-container'>
+                    <select 
+                        value={this.state.selectedVal}
+                        onChange={this.handleSelected}
+                    >
+                        <option value=''>Select Minutes</option>
+                        <option value='25'>less than 25 mins</option>
+                        <option value='35'>25-35 mins</option>
+                        <option value='45'>35-45 mins</option>
+                        <option value='55'>45-55 mins</option>
+                    </select>
+                    <button onClick={this.getResult}>filter</button>
+                </div>
                 <div>
                     {this.renderResults()}
                 </div>

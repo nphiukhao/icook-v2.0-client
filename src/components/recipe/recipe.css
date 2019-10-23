@@ -1,0 +1,70 @@
+/* font-family: 'Cookie', cursive;
+font-family: 'Vidaloka', serif;
+font-family: 'Abel', sans-serif;
+font-family: 'Raleway', sans-serif; */
+
+.recipe-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 60%;
+    height: 70%;
+    background: rgba(92, 146, 85, 0.856);
+}
+
+h2 {
+    margin: 0;
+    font-family: 'Vidaloka', serif;
+    font-size: 3.5em;
+}
+
+/* .recipe-container button {
+    width: 100px;
+    margin: 0 auto;
+} */
+
+.recipe-container p {
+    font-family: 'Raleway', sans-serif;
+    padding: 5px 50px;
+}
+
+.recipe-container span{
+    font-family: 'Vidaloka', serif;
+    font-size: 30px;
+    color: white;
+}
+.recipe-buttons{
+    display: flex;
+    flex-direction: row;
+    width:50%;
+    margin: 10px auto;
+}
+
+.edit, .remove {
+    font-size: 17px;
+    width: 100px;
+    padding: 5px;
+}
+.button {
+    background: rgba(92, 146, 85, 0.856);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 550;
+    margin: 25px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border: solid white 1.1px;
+    margin: 20px auto;
+}
+
+.update {
+    width: 75px;
+    font-size: 13px;
+    padding: 3px;
+    margin-left: 10px;
+
+}

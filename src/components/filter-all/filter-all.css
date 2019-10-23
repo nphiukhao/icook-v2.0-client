@@ -1,0 +1,13 @@
+.filter-all-container {
+    margin-top: 55px;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.filter-all-container h2 {
+    color: white;
+    margin-top: 50px;
+    padding: 20px;
+    font-family: 'Cookie', cursive;
+    font-size: 60px;
+}

@@ -7,7 +7,7 @@ import FilterTime from './components/filter-time/filter-time';
 import LoginForm from './components/login-form/login-form';
 import Navbar from './components/navbar/navbar';
 import AddRecipeForm from './components/add-recipe/add-recipes';
-import Recipe from './components/recipe/recipe'
+import Recipe from './components/recipe/recipeWParamsId'
 import PrivateRoute from './routetypes/PrivateRoute';
 
 

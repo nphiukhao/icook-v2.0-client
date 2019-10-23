@@ -1,17 +1,57 @@
 
+.form-container {
+    width: 50%;
+    background: rgba(92, 146, 85, 0.856);
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    margin: auto;
+}
+
 .add-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 50%;
+    width: 85%;
     margin: auto;
-    margin-top: 100px;
+    margin: 20px auto;
     text-align: left;
 }
+.add-form button {
+    background: rgba(92, 146, 85, 0.856);
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 550;
+    font-size: 17px;
+    margin: 25px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 40px;
+    border: solid white 1.1px;
+    width: 150px;
+    margin: 20px auto;
+}
 
+.add-form button:hover {
+    color: rgba(92, 146, 85, 0.856);
+    background: white;
+}
 .field {
     display: block;
     width: 100%;
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    padding: 5px;
+    border: 0;
+    border-radius: 5px;
 }
 .split{
     display: flex;
@@ -25,4 +65,12 @@
 .recipe-minutes, .recipe-title, .recipe-ingre, .recipe-instr{
     margin-top: 20px;
     padding: 10px;
+}
+
+.ingre {
+    height: 75px;
+}
+
+.instr {
+    height: 120px;
 }

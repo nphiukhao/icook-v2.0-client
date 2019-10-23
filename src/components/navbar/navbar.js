@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import TokenService from '../../services/TokenService'
 import RecipeContext from '../../context/RecipeContext'
+import './navbar.css'
 
 export default class Navbar extends Component {
     
@@ -14,19 +15,22 @@ export default class Navbar extends Component {
     }
 
     render() {
-        console.log('navbar rendering')
-        console.log(this.context.isLoggedIn)
+        //console.log('navbar rendering')
         let loginLink
         if(this.context.isLoggedIn === false ) {
-            loginLink = <Link to='/login'> login</Link>
+            loginLink = <Link to='/login' style={{ textDecoration: 'none'}}>login</Link>
         }
         return (
             <nav className='navbar'>
-                <p>placeholder for logo</p>
-                <Link to='/' className='logolink'> ICook</Link>
-                {loginLink}
-                <Link to='/add'> add new recipe</Link>
-                <Link onClick={this.logoutHandler} to='/'>Logout</Link>
+                <div className='logolink'>
+                    <Link to='/' style={{ textDecoration: 'none'}}> ICook</Link>
+                </div>
+                <div className='navlinks'> 
+                    <Link to='/add' style={{ textDecoration: 'none'}}>+ new recipe</Link>
+                    {loginLink}
+                    <Link onClick={this.logoutHandler} to='/' style={{ textDecoration: 'none'}}>logout</Link>
+                </div>
+                
                 
            </nav>
         )

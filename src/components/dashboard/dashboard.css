@@ -1,0 +1,79 @@
+/* font-family: 'Cookie', cursive;
+font-family: 'Vidaloka', serif;
+font-family: 'Abel', sans-serif; */
+h1 {
+    margin-top: 300px;
+    font-family: 'Cookie', cursive;
+    font-size: 80px;
+    color: white;
+}
+.options {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 90%;
+
+}
+.dashboard-div{
+    width: 100%;
+    height: 600px;
+    margin: 10px;
+    background: rgba(92, 146, 85, 0.856);
+    color: white;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.dashboard-div:hover{
+    background: rgb(92, 146, 85);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+
+}
+
+.dashboard-div p {
+    font-family: 'Cookie', cursive;
+    font-size: 45px;
+    margin: 0;
+    padding: 0;
+}
+
+.filtLogo {
+    height: 150px;
+}
+
+link {
+    text-decoration: 'none';
+} 
+
+.infiltLogo {
+    background: url('../../img/app-ingre-icon.png');
+    width: 35%;
+    height: 30%;
+    background-repeat: no-repeat;
+    background-size: contain ;
+    margin: 50px auto;
+
+
+}
+
+.timefiltLogo {
+    background: url('../../img//app-timer-icon.png');
+    width: 40%;
+    height: 30%;
+    background-repeat: no-repeat;
+    background-size: contain ;
+    margin: 50px auto;
+}
+
+.allfiltLogo{
+    background: url('../../img//app-book-icon.png');
+    width: 40%;
+    height: 30%;
+    background-repeat: no-repeat;
+    background-size: contain ;
+    margin: 50px auto;
+}
+

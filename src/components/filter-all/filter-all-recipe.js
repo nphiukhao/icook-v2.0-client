@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Recipelist from './recipe-list'
 import RecipeContext from '../../context/RecipeContext'
 import RecipeApiService from '../../services/RecipeServices'
+import './filter-all.css'
 
 export default class FilterAll extends Component {
 
@@ -31,7 +32,7 @@ export default class FilterAll extends Component {
     
     render() {
         return (
-            <div>
+            <div className='filter-all-container'>
                 <h2>All of the recipes</h2>
                 {this.renderRecipes()}
                 

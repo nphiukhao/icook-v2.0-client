@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import AuthService from '../../services/AuthService'
 import TokenService from '../../services/TokenService'
 import RecipeContext from '../../context/RecipeContext'
+import './login-form.css'
 
 export default class LoginForm extends Component {
 
@@ -34,14 +35,15 @@ export default class LoginForm extends Component {
 
     render() {
         return (
-            <div>
+            <div className='login-container'>
+                <p>login</p>
                 <form onSubmit={this.handleLogin}>
-                    <label htmlFor='user_name'>Username: </label>
-                    <input id='user_name' name='user_name' required></input>
-                    <label htmlFor='password'>Password: </label>
-                    <input id='password' name='password' type='password' required></input>
-                    <button type='submit'>Login</button>
+                    <input id='user_name' name='user_name' required placeholder='Username'></input>
+                    <input id='password' name='password' type='password' required placeholder='Password'></input>
+                    <button type='submit'>login</button>
                 </form>
+
+
             </div>
         )
     }

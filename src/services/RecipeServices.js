@@ -15,7 +15,7 @@ const RecipeApiService = {
         )
     },
     getByTime(value) {
-        return fetch(`http://localhost:8000/time/${value}`, {
+        return fetch(`${config.API_ENDPOINT}/time/${value}`, {
             headers: {
                 'authorization' : `bearer ${TokenService.getAuthToken()}`,
             },
@@ -28,13 +28,24 @@ const RecipeApiService = {
     },
     deleteRecipe(id){
         console.log('in the delete function')
-        // const options = {
-        //     method: 'DELETE',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     }
-        // }
-        // fetch(`http://localhost:8000/recipe/${id}`, options)
+        
+
+    },
+    updateMinutes(id, newMinutes) {
+
+        let data = newMinutes
+        console.log(data, id)
+        return fetch(`${config.API_ENDPOINT}/recipe/${id}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ newMinutes: data })
+        })
+        .then(res => console.log(res))
+        .catch( err => {
+            console.log(err)
+        })
     }
 }
 
