@@ -1,11 +1,11 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
 import Navbar from './navbar'
-import { MemoryRouter } from 'react-router-dom'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 
-
-it(`Renders without crashing`, () => {
-    const div = document.createElement('div')
-    ReactDOM.render(<MemoryRouter><Navbar /></MemoryRouter>, div)
-    ReactDOM.unmountComponentAtNode(div);
-});
+describe(`nav bar component`, () => {
+    it('nav bar snapshot test', () => {
+        const tree = shallow(<Navbar/>)
+        expect(toJson(tree)).toMatchSnapshot()
+    })
+})

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './add-recipe.css'
+import TokenService from '../../services/TokenService'
+import config from '../../config'
 
 
 export default class AddRecipeForm extends Component {
@@ -20,7 +22,6 @@ export default class AddRecipeForm extends Component {
   }
 
   onSubmitHandle = (e) => {
-    console.log('handling submit')
     e.preventDefault()
 
     const data = {
@@ -33,30 +34,28 @@ export default class AddRecipeForm extends Component {
     const options = {
       method: 'POST',
       headers: {
+        'Authorization' : `bearer ${TokenService.getAuthToken()}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data)
 
     }
-    fetch('http://localhost:8000/add', options)
+    fetch(`${config.API_ENDPOINT}/add`, options)
       .then(res => {
         if (res.ok) {
           return res.json()
         }
-
         throw new Error('something went wrong')
-
       })
-      .then(result => console.log(result))
+      
 
     const { location, history } = this.props
     const destination = (location.state || {}).from || '/'
     history.push(destination)
-    console.log('location pushed')
   }
 
   render() {
-    console.log(this.state)
+    
     return (
       <section className='form-container'>
         <form className='add-form' onSubmit={e => this.onSubmitHandle(e)}>

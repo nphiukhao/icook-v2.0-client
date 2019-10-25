@@ -9,13 +9,12 @@ export default class Navbar extends Component {
     static contextType = RecipeContext
 
     logoutHandler = () => {
-        console.log('logging out')
         TokenService.clearAuthToken()
         this.context.setLogin(false)
     }
 
     render() {
-        //console.log('navbar rendering')
+    
         let loginLink
         if(this.context.isLoggedIn === false ) {
             loginLink = <Link to='/login' style={{ textDecoration: 'none'}}>login</Link>

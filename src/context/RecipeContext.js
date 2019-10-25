@@ -55,6 +55,7 @@ export class RecipeProvider extends Component {
         })
     }
 
+
     loadRecipeData = (result) => {
         this.setState({
             recipeArray: result
@@ -83,13 +84,11 @@ export class RecipeProvider extends Component {
     }
 
     handleClientUpdate = (newMins) => {
-        console.log(newMins)
         this.setState({
             minutes: newMins
         })
     }
     clearRecipeArray = () => {
-        console.log('clearning recipe array')
         this.setState({ recipeArray: []})
     }
 
@@ -138,7 +137,7 @@ export class RecipeProvider extends Component {
             .then(result => this.setId(result.recipe_id))
             .then(after => {
                 let id = this.state.recipeId
-                return fetch(`http://localhost:8000/recipe/${id}`)
+                return fetch(`${config.API_ENDPOINT}/recipe/${id}`)
                 .then(res => res.json())
                 .then(result => this.setIngred(result, id))
                 .catch(err => console.error(err))

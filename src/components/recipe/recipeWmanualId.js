@@ -8,7 +8,6 @@ export default class RecipeManualId extends Component {
 
 
     render() {
-        console.log(this.context)
         if(this.context.recipeId){
             const { ingredients, instructions, title, minutes } = this.context
             return (

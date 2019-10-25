@@ -4,19 +4,20 @@ font-family: 'Abel', sans-serif;
 font-family: 'Raleway', sans-serif; */
 
 .recipe-container {
-    display: flex;
     flex-direction: column;
     justify-content: center;
     margin: auto;
     width: 60%;
     height: 70%;
     background: rgba(92, 146, 85, 0.856);
+    overflow-y: auto;
 }
 
 h2 {
     margin: 0;
     font-family: 'Vidaloka', serif;
     font-size: 3.5em;
+    padding: 2% 0;
 }
 
 /* .recipe-container button {

@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add Recipe component add recipe snapshot test 1`] = `
+<section
+  className="form-container"
+>
+  <form
+    className="add-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="split"
+    >
+      <div
+        className="recipe-title"
+      >
+        <label
+          htmlFor="recipe-title"
+        >
+          Recipe Title: 
+        </label>
+        <input
+          className="title field"
+          id="recipe-title"
+          name="recipe-title"
+          onChange={[Function]}
+          placeholder="Garlic Butter Steak"
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="recipe-minutes"
+      >
+        <label
+          htmlFor="recipe-minutes"
+        >
+          Total Cooking Time (minutes):
+        </label>
+        <input
+          className="minutes field"
+          id="recipe-minutes"
+          name="recipe-minutes"
+          onChange={[Function]}
+          placeholder="45"
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="recipe-ingre"
+    >
+      <label
+        htmlFor="recipe-ingre"
+      >
+        Ingredients Needed:
+      </label>
+      <textarea
+        className="ingre field"
+        id="recipe-ingre"
+        name="recipe-ingre"
+        onChange={[Function]}
+        placeholder="fresh parsley, minced garlic, soy sauce, flat iron steak etc."
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="recipe-instr"
+    >
+      <label
+        htmlFor="recipe-instr"
+      >
+        Instructions:
+      </label>
+      <textarea
+        className="instr field"
+        id="recipe-instr"
+        name="recipe-instr"
+        onChange={[Function]}
+        placeholder="Mix 1 tablespoon butter, parsley, garlic and soy sauce. Sprinkle steak with salt and pepper..."
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      className="addButton"
+      type="submit"
+    >
+      Add Recipe
+    </button>
+  </form>
+</section>
+`;

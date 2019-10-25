@@ -9,10 +9,10 @@ export default class FilterTime extends Component {
     state = {
         selectedVal: '',
     }
-    static contextType = RecipeContext 
+    static contextType = RecipeContext
 
     handleSelected = (e) => {
-        console.log('selected changed')
+
         this.setState({
             selectedVal: e.target.value
         })
@@ -20,39 +20,40 @@ export default class FilterTime extends Component {
 
     getResult = () => {
         this.context.clearRecipeArray()
-        console.log('fetching filtered results')
+
         //////loading the recipeArray with the filtered out ones only
         RecipeApiService.getByTime(this.state.selectedVal)
             .then(result => this.context.loadRecipeData(result))
     }
 
     renderResults = () => {
-        console.log(this.context.recipeArray)
-        return this.context.recipeArray.map(recipe => 
-            <Recipelist 
+
+        return this.context.recipeArray.map(recipe =>
+            <Recipelist
                 key={recipe.id}
                 id={recipe.id}
                 title={recipe.title}
                 instructions={recipe.instructions}
                 minutes={recipe.minutes}
             />
-            )
+        )
     }
 
     componentDidMount() {
         //////making sure the recipeArray is loaded first 
         RecipeApiService.getRecipe()
-          .then(result => {
-              this.context.loadRecipeData(result)
-              console.log(this.context)
-        })
+            .then(result => {
+                this.context.loadRecipeData(result)
+
+            })
     }
 
     render() {
         return (
             <div className='filter-time'>
+                <h2>Filter by total cooking time</h2>
                 <div className='select-container'>
-                    <select 
+                    <select
                         value={this.state.selectedVal}
                         onChange={this.handleSelected}
                     >

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recipe list component Recipe list snapshot test 1`] = `
+<div
+  className="recipe-links-container"
+>
+  <Link
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+    to="/recipe/undefined"
+  >
+    <h3 />
+    <h4>
+      Total Cooking Time: 
+       mins.
+    </h4>
+  </Link>
+</div>
+`;

@@ -9,6 +9,15 @@ font-family: 'Raleway', sans-serif; */
     overflow-y: auto;
     height: 100%;
 }
+
+.filter-time h2 {
+    color: white;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding: 20px;
+    font-family: 'Cookie', cursive;
+    font-size: 60px;
+}
 .select-container{
     display: flex;
     flex-direction: row;

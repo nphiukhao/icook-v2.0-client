@@ -1,8 +1,13 @@
 /* font-family: 'Cookie', cursive;
 font-family: 'Vidaloka', serif;
 font-family: 'Abel', sans-serif; */
+
+.dashboard-container {
+    height: 100%;
+    margin-top: 0;
+}
 h1 {
-    margin-top: 300px;
+    margin-top: 100px;
     font-family: 'Cookie', cursive;
     font-size: 80px;
     color: white;
@@ -35,7 +40,7 @@ h1 {
 
 .dashboard-div p {
     font-family: 'Cookie', cursive;
-    font-size: 45px;
+    font-size: 53px;
     margin: 0;
     padding: 0;
 }
@@ -50,7 +55,7 @@ link {
 
 .infiltLogo {
     background: url('../../img/app-ingre-icon.png');
-    width: 35%;
+    width: 30%;
     height: 30%;
     background-repeat: no-repeat;
     background-size: contain ;
@@ -61,7 +66,7 @@ link {
 
 .timefiltLogo {
     background: url('../../img//app-timer-icon.png');
-    width: 40%;
+    width: 35%;
     height: 30%;
     background-repeat: no-repeat;
     background-size: contain ;

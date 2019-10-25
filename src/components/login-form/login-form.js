@@ -6,9 +6,15 @@ import './login-form.css'
 
 export default class LoginForm extends Component {
 
+    state = {
+        error: ''
+    }
     static contextType = RecipeContext 
 
     successLogin = () => {
+        this.setState({
+            error: ''
+        })
         const { location, history } = this.props
         const destination = (location.state || {}).from || '/'
         history.push(destination)
@@ -27,19 +33,27 @@ export default class LoginForm extends Component {
             user_name.value = ''
             password.value = ''
             TokenService.saveAuthToken(res.authToken)
-            console.log('login successul!')
             this.successLogin()
         })
-        .catch(err => console.error(err))
+        .catch(err => this.setState({error: err.error }) )
     }
 
     render() {
+        let renderError
+        if(this.state.error) {
+            renderError = <p className='login-error'>{this.state.error}</p>
+        }
         return (
             <div className='login-container'>
                 <p>login</p>
+                <div className='demo'>
+                    <p>demo username: Iam</p>
+                    <p>demo password: Legit</p>
+                </div>
                 <form onSubmit={this.handleLogin}>
                     <input id='user_name' name='user_name' required placeholder='Username'></input>
                     <input id='password' name='password' type='password' required placeholder='Password'></input>
+                    {renderError}
                     <button type='submit'>login</button>
                 </form>
 

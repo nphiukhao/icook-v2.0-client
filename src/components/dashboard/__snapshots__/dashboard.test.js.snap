@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard component Dashboard snapshot test 1`] = `
+<div
+  className="dashboard-container"
+>
+  <h1>
+    Welcome to ICook!
+  </h1>
+  <div
+    className="options"
+  >
+    <Link
+      className="dashboard-div"
+      style={
+        Object {
+          "textDecoration": "none",
+        }
+      }
+      to="/all"
+    >
+      <p>
+         See All Recipes
+      </p>
+      <div
+        className="allfiltLogo"
+      />
+    </Link>
+    <Link
+      className="dashboard-div"
+      style={
+        Object {
+          "textDecoration": "none",
+        }
+      }
+      to="/time"
+    >
+      <p>
+         Filter by Time 
+      </p>
+      <div
+        className="timefiltLogo"
+      />
+    </Link>
+    <Link
+      className="dashboard-div"
+      style={
+        Object {
+          "textDecoration": "none",
+        }
+      }
+      to="/ingredient"
+    >
+      <p>
+         Filter by Ingredients 
+      </p>
+      <div
+        className="infiltLogo"
+      />
+    </Link>
+  </div>
+</div>
+`;

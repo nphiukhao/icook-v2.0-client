@@ -13,12 +13,11 @@ export default class FilterIngredient extends Component {
         RecipeApiService.getRecipe()
         .then(result => {
             this.context.loadRecipeData(result)
-            console.log(this.context)
         })
     }
 
     render() {
-        console.log(this.context)
+        
         let { ingred } = this.context
         let result;
         if(this.context.search === true) {

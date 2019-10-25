@@ -1,11 +1,12 @@
+
 import React from 'react'
-import ReactDOM from 'react-dom';
 import RecipeManualId from './recipeWmanualId'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 
-
-it(`Renders without crashing`, () => {
-
-    const div = document.createElement('div')
-    ReactDOM.render(<RecipeManualId />, div)
-    ReactDOM.unmountComponentAtNode(div);
-});
+describe(`RecipeWManualId component`, () => {
+    it('RecipeManualId snapshot test', () => {
+        const tree = shallow(<RecipeManualId/>)
+        expect(toJson(tree)).toMatchSnapshot()
+    })
+})

@@ -14,7 +14,6 @@ export default class Recipe extends Component {
         newMin: null
     }
     handleEdit = (newMinutes) => {
-        console.log(newMinutes, this.props.match.params.id)
         let id = this.props.match.params.id
         RecipeApiService.updateMinutes(id, newMinutes)
             .then(after => this.context.handleClientUpdate(newMinutes))
@@ -24,7 +23,6 @@ export default class Recipe extends Component {
         })
     }
     handleDelete = () => {
-        console.log(this.context.recipeId)
         
         fetch(`${config.API_ENDPOINT}/delete/${this.context.recipeId}`, {
             method: 'DELETE',
@@ -34,14 +32,12 @@ export default class Recipe extends Component {
 
     componentDidMount() {
         let id = this.props.match.params.id
-        fetch(`http://localhost:8000/recipe/${id}`)
-            .then(res => res.json())
+        RecipeApiService.getRecipebyId(id)
             .then(result => this.context.setIngred(result, id))
             .catch(err => console.error(err))
     }
 
     render() {
-        console.log(this.context)
         const { ingredients, instructions, title, minutes } = this.context
         return (
             <div className='recipe-container'>

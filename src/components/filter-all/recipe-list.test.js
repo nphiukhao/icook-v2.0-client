@@ -1,11 +1,11 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
 import Recipelist from './recipe-list'
-import { MemoryRouter } from 'react-router-dom'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 
-
-it(`Renders without crashing`, () => {
-    const div = document.createElement('div')
-    ReactDOM.render(<MemoryRouter><Recipelist /></MemoryRouter>, div)
-    ReactDOM.unmountComponentAtNode(div);
-});
+describe(`Recipe list component`, () => {
+    it('Recipe list snapshot test', () => {
+        const tree = shallow(<Recipelist/>)
+        expect(toJson(tree)).toMatchSnapshot()
+    })
+})

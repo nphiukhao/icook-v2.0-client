@@ -1,11 +1,11 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
 import AddRecipeForm from './add-recipes'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 
-
-it(`Renders without crashing`, () => {
-    const div = document.createElement('div')
-    ReactDOM.render(<AddRecipeForm />, div)
-    ReactDOM.unmountComponentAtNode(div);
-
-});
+describe(`Add Recipe component`, () => {
+    it('add recipe snapshot test', () => {
+        const tree = shallow(<AddRecipeForm/>)
+        expect(toJson(tree)).toMatchSnapshot()
+    })
+})

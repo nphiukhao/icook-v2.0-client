@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recipe component Recipe in recipeWParamsId snapshot test 1`] = `
+<div
+  className="recipe-container"
+>
+  <h2>
+     
+  </h2>
+  <div>
+    <p>
+      <span>
+        Ingredients:
+      </span>
+       
+    </p>
+    <p>
+      <span>
+        Instructions:
+      </span>
+       
+    </p>
+    <span>
+      Total Cooking Time: 
+    </span>
+  </div>
+  <div
+    className="recipe-buttons"
+  >
+    <button
+      className="edit button"
+      onClick={[Function]}
+    >
+      Edit
+    </button>
+    <button
+      className="remove button"
+      onClick={[Function]}
+    >
+      Remove
+    </button>
+  </div>
+</div>
+`;

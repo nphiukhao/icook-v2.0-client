@@ -1,11 +1,11 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
 import Dashboard from './dashboard'
-import { MemoryRouter } from 'react-router-dom'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 
-
-it(`Renders without crashing`, () => {
-    const div = document.createElement('div')
-    ReactDOM.render(<MemoryRouter><Dashboard /></MemoryRouter>, div)
-    ReactDOM.unmountComponentAtNode(div);
-});
+describe(`Dashboard component`, () => {
+    it('Dashboard snapshot test', () => {
+        const tree = shallow(<Dashboard/>)
+        expect(toJson(tree)).toMatchSnapshot()
+    })
+})

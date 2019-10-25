@@ -9,7 +9,6 @@ export default class FilterAll extends Component {
     static contextType = RecipeContext
 
     renderRecipes = () => {
-        console.log(this.context)
         return this.context.recipeArray.map(recipe => 
             <Recipelist 
                 key={recipe.id}

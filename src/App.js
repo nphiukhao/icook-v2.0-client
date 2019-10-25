@@ -31,9 +31,6 @@ class App extends Component {
           <PrivateRoute exact path={'/recipe/:id'} component={Recipe}/>
           <Redirect exact from='*' to='/' />
           
-          
-
-
         </main>
         
       </div>

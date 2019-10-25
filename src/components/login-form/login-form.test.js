@@ -1,10 +1,11 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
 import LoginForm from './login-form'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 
-
-it(`Renders without crashing`, () => {
-    const div = document.createElement('div')
-    ReactDOM.render(<LoginForm />, div)
-    ReactDOM.unmountComponentAtNode(div);
-});
+describe(`login form component`, () => {
+    it('Login form snapshot test', () => {
+        const tree = shallow(<LoginForm/>)
+        expect(toJson(tree)).toMatchSnapshot()
+    })
+})
