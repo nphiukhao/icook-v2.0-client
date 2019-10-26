@@ -20,10 +20,12 @@ export default class LoginForm extends Component {
         history.push(destination)
         this.context.setLogin(true)
     }
+    // handleRegister = () => {
+    //     console.log('registering')
+    // }
 
     handleLogin = (e) => {
         e.preventDefault()
-
         const { user_name, password } = e.target
         AuthService.postLogin({
             user_name: user_name.value,
@@ -56,7 +58,7 @@ export default class LoginForm extends Component {
                     {renderError}
                     <button type='submit'>login</button>
                 </form>
-
+                {/* <button onClick={() => this.handleRegister()}>register</button> */}
 
             </div>
         )

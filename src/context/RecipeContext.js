@@ -31,7 +31,6 @@ const RecipeContext = React.createContext({
     handleIngredFiltChange: () => {},
     setSearchFalse: () => {},
     handleClientUpdate: ()=>{}
-    
 })
 export default RecipeContext
 

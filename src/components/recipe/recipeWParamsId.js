@@ -15,8 +15,8 @@ export default class Recipe extends Component {
     }
     handleEdit = (newMinutes) => {
         let id = this.props.match.params.id
+        this.context.handleClientUpdate(newMinutes)
         RecipeApiService.updateMinutes(id, newMinutes)
-            .then(after => this.context.handleClientUpdate(newMinutes))
 
         this.setState({
             edit: false,
@@ -38,6 +38,7 @@ export default class Recipe extends Component {
     }
 
     render() {
+        //console.log(this.context)
         const { ingredients, instructions, title, minutes } = this.context
         return (
             <div className='recipe-container'>
