@@ -15,7 +15,9 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
+main {
+  height: 100vh;
+}
 
 section {
   display: flex;

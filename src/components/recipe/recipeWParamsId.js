@@ -49,7 +49,7 @@ export default class Recipe extends Component {
                     {
                         this.state.edit
                         ? 
-                        <span>Total Cooking Time:<input defaultValue={minutes} ref='minutes'/> 
+                        <span>Total Cooking Time:<input className='update-input' defaultValue={minutes} ref='minutes'/> 
                             <button className='update button' onClick={() => this.handleEdit(this.refs.minutes.value)}>Update</button>
                         </span>
                         :
