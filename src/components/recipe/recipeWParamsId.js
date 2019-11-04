@@ -38,7 +38,6 @@ export default class Recipe extends Component {
     }
 
     render() {
-        //console.log(this.context)
         const { ingredients, instructions, title, minutes } = this.context
         return (
             <div className='recipe-container'>

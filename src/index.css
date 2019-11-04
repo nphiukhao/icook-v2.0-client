@@ -16,7 +16,12 @@ body {
   background-repeat: no-repeat;
 }
 main {
+
   height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 section {

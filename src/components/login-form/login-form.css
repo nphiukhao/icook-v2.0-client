@@ -1,7 +1,173 @@
 /* * {
     font-family: 'Raleway', sans-serif;
 } */
+
+
+
+.forms-container{
+    padding-top: 55px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container form{
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container form button, .register-container button {
+    background: rgba(92, 146, 85, 0.856);
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 550;
+    font-size: 15px;
+    margin-top: 15px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 40px;
+    border: solid white 1.1px;
+}
+.login-container form button:hover, .register-container button:hover {
+    color: rgba(92, 146, 85, 0.856);
+    background: white;
+
+}
+
+.login-container p {
+    margin: 0 auto;
+    padding-bottom: 8px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    height: 375px;
+    background: rgba(92, 146, 85, 0.856);
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    border-radius: 18px;
+    margin-top: 30px;
+    font-size: 30px;
+    color: white;
+}
+/* main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+} */
+
+#user_name, #password {
+    width: 75%;
+    margin: auto;
+    margin-top: 28px;
+    margin-bottom: 0px;
+    height: 35px;
+    border-radius: 5px;
+    border: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    padding-left: 15px;
+}
+
+#user_name{
+    margin-top: 7px;
+}
+
+.error {
+    color: red;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.instructions {
+    font-size: 15px;
+}
+.register-container p {
+    margin: 0 auto;
+    padding-bottom: 15px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    height: 350px;        
+    margin-top: 30px;
+    background: rgba(92, 146, 85, 0.856);
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    border-radius: 18px;
+    font-size: 30px;
+    color: white;
+}
+.register-container form {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.or{
+    font-weight: 550;
+    font-size: 15px;
+    padding: 5px 0;
+
+}
+
+/* register now button */
+.login-container > button {
+    background: rgba(92, 146, 85, 0.856);
+    width: 140px;
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 550;
+    font-size: 15px;
+    margin: 0 auto;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 40px;
+    border: solid white 1.1px;
+}
+
+.reg-message{
+    padding-top: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 15px;
+
+}
+
 @media (min-width: 800px) { 
+
+    .forms-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
 
     .login-container form{
         color: white;
@@ -13,7 +179,7 @@
         align-items: center;
     }
     
-    .login-container form button {
+    .login-container form button, .register-container button {
         background: rgba(92, 146, 85, 0.856);
         color: white;
         padding: 5px 25px;
@@ -21,15 +187,15 @@
         text-decoration: none;
         font-family: 'Raleway', sans-serif;
         font-weight: 550;
-        font-size: 20px;
-        margin: 25px 2px;
+        font-size: 15px;
+        margin-top: 15px;
         cursor: pointer;
         -webkit-transition-duration: 0.4s; /* Safari */
         transition-duration: 0.4s;
         border-radius: 40px;
         border: solid white 1.1px;
     }
-    .login-container form button:hover {
+    .login-container form button:hover, .register-container button:hover {
         color: rgba(92, 146, 85, 0.856);
         background: white;
     
@@ -45,25 +211,24 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin: auto;
-        width: 30vw;
-        height: 40vh;
+        width: 35%;
+        height: 375px;
         background: rgba(92, 146, 85, 0.856);
         box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
         border-radius: 18px;
-    
+        margin-top: 0;
         font-size: 30px;
         color: white;
     }
-    main {
+    /* main {
         display: flex;
         flex-direction: column;
         justify-content: center;
         height: 100vh;
     }
-    
+     */
     #user_name, #password {
-        width: 22vw;
+        width: 75%;
         margin: auto;
         margin-top: 28px;
         margin-bottom: 0px;
@@ -73,17 +238,104 @@
         font-family: 'Raleway', sans-serif;
         font-size: 17px;
         padding-left: 15px;
-    
+    }
+
+    #user_name{
+        margin-top: 7px;
     }
     
-    .login-error {
+    .error {
         color: red;
         font-size: 15px;
         padding: 10px;
     }
     
-    .demo p {
-        font-size: 18px;
+    .instructions {
+        font-size: 15px;
+    }
+    .register-container p {
+        margin: 0 auto;
+        
+        padding-bottom: 15px;
+        font-family: 'Raleway', sans-serif;
+    }
+
+    .register-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 35%;
+        height: 350px;        
+        margin-top: 0;
+        background: rgba(92, 146, 85, 0.856);
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        border-radius: 18px;
+        font-size: 30px;
+        color: white;
+    }
+    .register-container form {
+        color: white;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .or{
+        font-weight: 550;
+        font-size: 15px;
+        padding: 5px 0;
+
+    }
+
+    /* register now button */
+    .login-container > button {
+        background: rgba(92, 146, 85, 0.856);
+        width: 140px;
+        color: white;
+        padding: 5px 25px;
+        text-align: center;
+        text-decoration: none;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 550;
+        font-size: 15px;
+        margin: 0 auto;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        border-radius: 40px;
+        border: solid white 1.1px;
+    }
+}
+
+@media (min-width: 1200px) { 
+    
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 28%;
+        height: 375px;
+        background: rgba(92, 146, 85, 0.856);
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        border-radius: 18px;
+    
+        font-size: 30px;
+        color: white;
+    }
+
+    .register-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 28%;
+        height: 40vh;
+        background: rgba(92, 146, 85, 0.856);
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        border-radius: 18px;
+        font-size: 30px;
+        color: white;
     }
 
 }

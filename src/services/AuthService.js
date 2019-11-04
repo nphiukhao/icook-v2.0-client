@@ -22,10 +22,6 @@ const AuthService = {
             },
             body: JSON.stringify(newUser)
         })
-            .then(res =>
-                (!res.ok) ? res.json().then(e => Promise.reject(e))
-                    : res.json()
-            )
     }
 }
 

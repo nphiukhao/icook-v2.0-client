@@ -5,7 +5,7 @@ font-family: 'Raleway', sans-serif; */
 
 .navbar {
     height: 55px;
-    background-color: rgb(40, 36, 41);
+    background-color: #282429;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

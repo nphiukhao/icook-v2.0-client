@@ -7,17 +7,24 @@ import './navbar.css'
 export default class Navbar extends Component {
     
     static contextType = RecipeContext
-
+    
     logoutHandler = () => {
         TokenService.clearAuthToken()
         this.context.setLogin(false)
     }
+ 
+    componentDidMount = () => {
+        TokenService.hasAuthToken() ? this.context.setLogin(true) : this.context.setLogin(false)
+    }
 
     render() {
-    
         let loginLink
         if(this.context.isLoggedIn === false ) {
             loginLink = <Link to='/login' style={{ textDecoration: 'none'}}>login</Link>
+        }
+        let logoutLink
+        if(this.context.isLoggedIn === true) {
+            logoutLink = <Link onClick={this.logoutHandler} to='/' style={{ textDecoration: 'none'}}>logout</Link>
         }
         return (
             <nav className='navbar'>
@@ -27,7 +34,7 @@ export default class Navbar extends Component {
                 <div className='navlinks'> 
                     <Link to='/add' style={{ textDecoration: 'none'}}>+ new recipe</Link>
                     {loginLink}
-                    <Link onClick={this.logoutHandler} to='/' style={{ textDecoration: 'none'}}>logout</Link>
+                    {logoutLink}
                 </div>
                 
                 

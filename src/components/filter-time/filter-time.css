@@ -7,6 +7,7 @@ font-family: 'Raleway', sans-serif; */
 .filter-time {
     overflow-y: auto;
     height: 100vh;
+    width: 100vw;
 }
 
 .filter-time h2 {

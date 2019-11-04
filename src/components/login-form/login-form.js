@@ -7,14 +7,22 @@ import './login-form.css'
 export default class LoginForm extends Component {
 
     state = {
-        error: '',
-        register: false
+        loginError: '',
+        register: false,
+        regError:'',
+        regMessage:''
     }
     static contextType = RecipeContext
-
+    successRegister = () => {
+        this.setState({
+            regError: '',
+            regMessage: 'Registration complete! Please login with your new Username and Password.'
+        })
+    }
     successLogin = () => {
         this.setState({
-            error: ''
+            loginError: '',
+            regMessage:''
         })
         const { location, history } = this.props
         const destination = (location.state || {}).from || '/'
@@ -28,17 +36,24 @@ export default class LoginForm extends Component {
         })
     }
     handleRegister = (e) => {
-        console.log('registering')
         e.preventDefault()
         const { user_name, password } = e.target
         AuthService.registerUser({
             user_name: user_name.value,
             password: password.value
         })
-            .then(res => console.log(res))
+            .then(res => {
+                if(!res.ok) {
+                    res.json().then(resp => this.setState({ regError: resp.error }))
+                }
+                else {
+                    user_name.value = ''
+                    password.value = ''
 
+                    this.successRegister()
+                }
+            })
     }
-
     handleLogin = (e) => {
         e.preventDefault()
         const { user_name, password } = e.target
@@ -52,46 +67,56 @@ export default class LoginForm extends Component {
                 TokenService.saveAuthToken(res.authToken)
                 this.successLogin()
             })
-            .catch(err => this.setState({ error: err.error }))
+            .catch(err => this.setState({ loginError: err.error }))
     }
 
     render() {
-        console.log(this.state)
         let renderError
-        if (this.state.error) {
-            renderError = <p className='login-error'>{this.state.error}</p>
+        if (this.state.loginError) {
+            renderError = <p className='error'>{this.state.loginError}</p>
+        }
+        let renderRegError
+        if(this.state.regError){
+            renderRegError = <p className='error'>{this.state.regError}</p>
+        }
+        let renderRegMessage
+        if(this.state.regMessage){
+            renderRegMessage = <p className='reg-message'>{this.state.regMessage}</p>
         }
         let renderRegister
         if (this.state.register) {
-            renderRegister = 
-            <div className='register-container'> 
-            <p>register</p>
-            <form onSubmit={this.handleRegister}>
-                <input id='user_name' name='user_name' required placeholder='Username'></input>
-                <input id='password' name='password' type='password' required placeholder='Password'></input>
-                {renderError}
-                <button type='submit'>register</button>
-            </form>
-            </div>
+            renderRegister =
+                <div className='register-container'>
+                    <p>register here!</p>
+                    <p className='instructions'>enter a username and password</p>
+                    <form onSubmit={this.handleRegister}>
+                        <input id='user_name' name='user_name' required placeholder='Username'></input>
+                        <input id='password' name='password' type='password' required placeholder='Password'></input>
+                        {renderRegError}
+                        {renderRegMessage}
+                        <button type='submit'>register</button>
+                    </form>
+                </div>
         }
         return (
-            <>
-            <div className='login-container'>
-                <p>login</p>
-                <div className='demo'>
-                    <p>demo username: Iam</p>
-                    <p>demo password: Legit</p>
+            <div className='forms-container'>
+                <div className='login-container'>
+                    <p>login</p>
+                    <div className='instructions'>
+                        <p>demo username: Iam</p>
+                        <p>demo password: Legit</p>
+                    </div>
+                    <form onSubmit={this.handleLogin}>
+                        <input id='user_name' name='user_name' required placeholder='Username'></input>
+                        <input id='password' name='password' type='password' required placeholder='Password'></input>
+                        {renderError}
+                        <button type='submit'>login</button>
+                    </form>
+                    <p className='or'>or</p>
+                    <button onClick={() => this.setRegister()}> register now</button>
                 </div>
-                <form onSubmit={this.handleLogin}>
-                    <input id='user_name' name='user_name' required placeholder='Username'></input>
-                    <input id='password' name='password' type='password' required placeholder='Password'></input>
-                    {renderError}
-                    <button type='submit'>login</button>
-                </form>
-                <button onClick={() => this.setRegister()}>register now</button>
+                {renderRegister}
             </div>
-            {renderRegister}
-            </> 
-        )
-    }
-}
+                )
+            }
+        }
