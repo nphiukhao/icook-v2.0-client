@@ -4,60 +4,95 @@ exports[`Dashboard component Dashboard snapshot test 1`] = `
 <div
   className="dashboard-container"
 >
-  <h1>
-    Welcome to ICook!
-  </h1>
   <div
-    className="options"
+    className="landing-section"
   >
-    <Link
-      className="dashboard-div"
+    <p
+      className="dashhead"
+    >
+      don't know what to cook? 
+      <span>
+        use ICook
+      </span>
+    </p>
+    <p
+      className="describution"
+    >
+      ICook is a recipe application built to save time, money, and headaches. Input your all your favorite recipes and let this application do all the work!
+    </p>
+    <a
+      className="start"
+      href="#start"
       style={
         Object {
           "textDecoration": "none",
         }
       }
-      to="/all"
     >
-      <p>
-         See All Recipes
-      </p>
-      <div
-        className="allfiltLogo"
-      />
-    </Link>
-    <Link
-      className="dashboard-div"
-      style={
-        Object {
-          "textDecoration": "none",
-        }
-      }
-      to="/time"
-    >
-      <p>
-         Filter by Time 
-      </p>
-      <div
-        className="timefiltLogo"
-      />
-    </Link>
-    <Link
-      className="dashboard-div"
-      style={
-        Object {
-          "textDecoration": "none",
-        }
-      }
-      to="/ingredient"
-    >
-      <p>
-         Filter by Ingredients 
-      </p>
-      <div
-        className="infiltLogo"
-      />
-    </Link>
+      explore now
+    </a>
   </div>
+  <section
+    className="get-started"
+    id="start"
+  >
+    <p
+      className="welcome"
+    >
+      Welcome to ICook!
+    </p>
+    <div
+      className="options"
+    >
+      <Link
+        className="dashboard-div"
+        style={
+          Object {
+            "textDecoration": "none",
+          }
+        }
+        to="/all"
+      >
+        <p>
+           See All Recipes
+        </p>
+        <div
+          className="allfiltLogo"
+        />
+      </Link>
+      <Link
+        className="dashboard-div"
+        style={
+          Object {
+            "textDecoration": "none",
+          }
+        }
+        to="/time"
+      >
+        <p>
+           Filter by Time 
+        </p>
+        <div
+          className="timefiltLogo"
+        />
+      </Link>
+      <Link
+        className="dashboard-div"
+        style={
+          Object {
+            "textDecoration": "none",
+          }
+        }
+        to="/ingredient"
+      >
+        <p>
+           Filter by Ingredients 
+        </p>
+        <div
+          className="infiltLogo"
+        />
+      </Link>
+    </div>
+  </section>
 </div>
 `;
