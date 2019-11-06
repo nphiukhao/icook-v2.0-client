@@ -4,8 +4,8 @@ The ICook application saves your go-to recipes with additional functions such as
 The client side is built using a mobile-first design. To use any of the features, you'll be prompted to a login page. Then, login using 'Iam' as the username and 'Legit' as the password.
 
 ## Links
-Live: https://icook.nphiukhao.now.sh
-server repo: https://github.com/nphiukhao/ICook-App-server
+Live: https://icook.nphiukhao.now.sh \
+Server repo: https://github.com/nphiukhao/ICook-App-server
 
 ## Mobile view
 ![ICook(iPhone X) copy](https://user-images.githubusercontent.com/52511122/68272801-90199700-0019-11ea-8268-b21fa950a63d.png)
@@ -15,5 +15,5 @@ server repo: https://github.com/nphiukhao/ICook-App-server
 ![localhost_3000_ (1) copy](https://user-images.githubusercontent.com/52511122/68273001-251c9000-001a-11ea-856e-f8de3e843ff4.png)
 
 ## Tech
-Client-side built with: React, CSS, Node
+Client-side built with: React, CSS, Node \
 Tested with: Jest, enzyme
