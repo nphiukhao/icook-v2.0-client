@@ -36,8 +36,6 @@ export default class Navbar extends Component {
                     {loginLink}
                     {logoutLink}
                 </div>
-                
-                
            </nav>
         )
     }
