@@ -1,0 +1,187 @@
+.commandBar {
+  position: fixed;
+  right: 0;
+  display: flex; 
+  flex-direction: column;
+  width: 0;
+}
+
+.commandBar-active {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.3) 10%,
+    rgba(0, 0, 0, 0.6) 20%,
+    rgba(0, 0, 0, 0.7) 30%
+  );
+  position: fixed;
+  height: 100%;
+  right: 0;
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 290px;
+}
+body {
+  overflow-x: hidden;
+}
+
+
+.nav-links li {
+  transform: translateX(100%);
+  transition: transform;
+  opacity: 1;
+  position: relative;
+}
+
+
+/*  -- if want to implement hide animation
+.nav-links li:nth-child(1) {
+  transition-delay: 0s;
+  animation-delay: 0s;
+}
+
+.nav-links li:nth-child(2) {
+  transition-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.nav-links li:nth-child(3) {
+  transition-delay: 0.4s;
+  animation-delay: 0.4s;
+} */
+
+.nav-active{
+  padding: 0;
+  padding-top: 100px;
+  margin: 0;
+  width: 280px;
+  text-align: end;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.nav-active li, .bottom-command li {
+  transform: translateX(0%);
+  transition: transform;
+  position: relative;
+  opacity: 1;
+  animation: show 0.5s;
+  padding-right: 10px;
+}
+
+.bottom-command {
+  padding-bottom: 25px;
+}
+.nav-active li:nth-child(1) {
+  transition-delay: 0s;
+  animation-delay: 0s;
+}
+
+.nav-active li:nth-child(2) {
+  transition-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+.nav-active li:nth-child(3) {
+  transition-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.nav-active li:nth-child(4) {
+  transition-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.nav-active li:nth-child(5) {
+  transition-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+.bottom-command li:nth-child(1) {
+  transition-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+
+.nav-active a:hover {
+  color: rgb(150, 150, 150);
+
+}
+
+@keyframes show {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes show {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+/* 
+@keyframes hide {
+  from {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes hide {
+  from {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+} */
+
+.nav-links li,
+.nav-active li, .bottom-command {
+  list-style: none;
+}
+.nav-links a,
+.nav-active a, .bottom-command a {
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+}
+
+.arrow {
+  padding-right: 10px;
+  cursor: pointer;
+  position: fixed;
+  margin-top: 30px;
+  right: 0;
+  color:white;
+}
+.arrow div {
+  width: 27px;
+  height: 4px;
+  background-color: #ececec;
+  margin: 5px;
+}
+
+.icon {
+  margin: 0 10px;
+}
+
+

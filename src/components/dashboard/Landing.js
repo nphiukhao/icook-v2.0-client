@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import './dashboard.css'
+import './Landing.css'
 
-export default class Dashboard extends Component {
+export default class Landing extends Component {
 
     render() {
         return (
@@ -16,7 +16,7 @@ export default class Dashboard extends Component {
                 </div>
                 <section id='start' className='get-started'>
                     <p className='welcome'>Welcome to ICook!</p>
-                    <div className='options'>
+                    {/* <div className='options'>
                         <Link to={'/all'} className='dashboard-div' style={{ textDecoration: 'none' }}>
                             <p> See All Recipes</p>
                             <div className='allfiltLogo'></div>
@@ -30,7 +30,7 @@ export default class Dashboard extends Component {
                             <div className='infiltLogo'></div>
                         </Link>
 
-                    </div>
+                    </div> */}
                 </section>
 
             </div>
