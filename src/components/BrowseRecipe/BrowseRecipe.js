@@ -14,7 +14,6 @@ export default class BrowseRecipe extends Component {
       .then(result => this.context.buildIngred(result.extendedIngredients))
   }
   renderIngredients = () => {
-    console.log('rendering ingredients')
     return <ul className='ingredients'>
       {this.context.ingredients.map(ingred => {
         return (
@@ -25,12 +24,6 @@ export default class BrowseRecipe extends Component {
   }
 
   render() {
-    if (this.context.ingredients === []) {
-      console.log('false and not empty')
-    }
-    if (this.context.ingredients) {
-      console.log('true and is not empty')
-    }
     return (
       <div>
         <h2> Single Recipe Page</h2>

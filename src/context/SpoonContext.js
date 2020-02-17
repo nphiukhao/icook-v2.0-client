@@ -13,8 +13,9 @@ const SpoonContext = React.createContext({
   ingredients: [],
   instructions: [],
   setResults: () => {},
+  clearResults: () => {},
   updateIngredients: () => {},
-  buildIngred: () => {}
+  buildIngred: () => {},
 });
 
 export default SpoonContext;
@@ -30,15 +31,24 @@ export class SpoonProvider extends Component {
     ingredients: [],
     instructions: []
   };
+  setResults = results => {
+    this.setState({ result: results });
+  };
+
+  clearResults = () => {
+    this.setState({
+      result: []
+    })
+  }
   updateIngredients = result => {
-    console.log("setting the state of ingreds");
+    // console.log("setting the state of ingreds");
     this.setState({
       ingredients: result
     });
   };
 
   buildIngred = ingredResult => {
-    console.log("inside bildIngred");
+    // console.log("inside bildIngred");
     let ingredientsArr = [];
     ingredResult.forEach(ingred => {
       ingredientsArr.push({
@@ -50,15 +60,13 @@ export class SpoonProvider extends Component {
     this.updateIngredients(ingredientsArr);
   };
 
-  setResults = results => {
-    this.setState({ result: results });
-  };
 
   render() {
     const value = {
       result: this.state.result,
       ingredients: this.state.ingredients,
       setResults: this.setResults,
+      clearResults: this.clearResults,
       updateIngredients: this.updateIngredients,
       buildIngred: this.buildIngred
     };

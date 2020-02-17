@@ -34,6 +34,10 @@ export default class BrowseRecipes extends Component {
       <RecipeList key={result.id} id={result.id} title={result.title} />
     ));
   };
+
+  componentDidMount = () => {
+    this.context.clearResults()
+  }
   render() {
     return (
       <div className='browse-container'>

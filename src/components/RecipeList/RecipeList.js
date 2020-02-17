@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function RecipeList(props) {
   const { id, title } = props;
-  console.log('in RecipeList and this is props:',props)
+  // console.log('in RecipeList and this is props:',props)
   return (
     <div className="recipe-card">
       <img
