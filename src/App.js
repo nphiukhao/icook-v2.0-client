@@ -12,6 +12,7 @@ import BrowseRecipes from './components/BrowseRecipes/BrowseRecipes'
 import PrivateRoute from './routetypes/PrivateRoute';
 import RecipeContext from './context/RecipeContext'
 import CommandBar from './components/CommandBar/CommandBar'
+import BrowseRecipe from './components/BrowseRecipe/BrowseRecipe'
 
 
 class App extends Component {
@@ -34,6 +35,7 @@ class App extends Component {
           <PrivateRoute exact path={'/time'} component={FilterTime}/>
           <PrivateRoute exact path={'/add'} component={AddRecipeForm}/>
           <PrivateRoute exact path={'/browse'} component={BrowseRecipes}/>
+          <PrivateRoute exact path={'/browse/:id'} component={BrowseRecipe}/> 
           <PrivateRoute exact path={'/recipe/:id'} component={Recipe}/>
           <Redirect exact from='*' to='/' />
           

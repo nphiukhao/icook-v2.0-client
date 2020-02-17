@@ -14,15 +14,14 @@ export default class BrowseRecipes extends Component {
   static contextType = SpoonContext;
 
   updateSearch = (e, searchParam) => {
-    console.log("event", e.target.value);
     this.setState({ [searchParam]: e.target.value });
   };
   searchQuery = e => {
     e.preventDefault();
-    console.log("calling query call", this.state);
+    // console.log("calling query call", this.state);
 
     fetch(
-      `${config.API_ENDPOINT}/search?query=${this.state.query}&apiKey=90983f8a705146c39a2acfcb0c8b7f28`
+      `https://api.spoonacular.com/recipes/search?query=${this.state.query}&number=12&apiKey=90983f8a705146c39a2acfcb0c8b7f28`
     )
       .then(res =>
         !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 
 export default function RecipeList(props) {
   const { id, title } = props;
@@ -10,6 +11,7 @@ export default function RecipeList(props) {
         alt={`${title}`}
       />
       <p>{title}</p>
+      <Link to={`/browse/${id}`}>{title}</Link>
     </div>
   );
 }

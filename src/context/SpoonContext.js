@@ -1,31 +1,66 @@
 import React, { Component } from "react";
 
 export const spoonsRecipe = {
-  result: []
+  result: [],
+  recipeInfo: [],
+  ingredients: [],
+  instructions: []
 };
 
 const SpoonContext = React.createContext({
   result: [],
-  setResults: () => {}
+  recipeInfo: [],
+  ingredients: [],
+  instructions: [],
+  setResults: () => {},
+  updateIngredients: () => {},
+  buildIngred: () => {}
 });
 
 export default SpoonContext;
 
 export class SpoonProvider extends Component {
   state = {
-    result: []
+    result: [],
+    recipeInfo: {
+      title: "",
+      summary: "",
+      minutes: ""
+    },
+    ingredients: [],
+    instructions: []
+  };
+  updateIngredients = result => {
+    console.log("setting the state of ingreds");
+    this.setState({
+      ingredients: result
+    });
+  };
+
+  buildIngred = ingredResult => {
+    console.log("inside bildIngred");
+    let ingredientsArr = [];
+    ingredResult.forEach(ingred => {
+      ingredientsArr.push({
+        name: ingred.name,
+        amount: ingred.measures.us.amount,
+        unit: ingred.measures.us.unitShort
+      });
+    });
+    this.updateIngredients(ingredientsArr);
   };
 
   setResults = results => {
-    console.log('in spoon context', results)
     this.setState({ result: results });
-    console.log('state',this.state.result)
   };
 
   render() {
     const value = {
       result: this.state.result,
-      setResults: this.setResults
+      ingredients: this.state.ingredients,
+      setResults: this.setResults,
+      updateIngredients: this.updateIngredients,
+      buildIngred: this.buildIngred
     };
     return (
       <SpoonContext.Provider value={value}>
