@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import "./RecipeList.css";
 
 export default function RecipeList(props) {
   const { id, title } = props;
@@ -7,11 +8,13 @@ export default function RecipeList(props) {
   return (
     <div className="recipe-card">
       <img
+        className="card-img"
         src={`https://spoonacular.com/recipeImages/${id}-312x150.jpg`}
         alt={`${title}`}
       />
-      <p>{title}</p>
-      <Link to={`/browse/${id}`}>{title}</Link>
+      <div className="card-text">
+        <Link to={`/browse/${id}`}>{title}</Link>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,16 @@
+.recipe-card{
+    width: 300px;
+    height: 220px;
+    background-color: #282429;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 20px 15px;
+}
+
+.card-text a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Vidaloka', serif;
+    font-size: 1.5em;
+    padding: 5px;
+}
