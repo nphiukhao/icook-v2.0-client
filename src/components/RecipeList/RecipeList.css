@@ -1,16 +1,73 @@
-.recipe-card{
-    width: 300px;
-    height: 220px;
-    background-color: #282429;
-    overflow: hidden;
-    border-radius: 10px;
-    margin: 20px 15px;
+.recipe-card {
+  width: 300px;
+  height: 220px;
+  background-color: #282429;
+  overflow: hidden;
+  border-radius: 10px;
+  margin: 20px 15px;
 }
 
-.card-text a {
-    text-decoration: none;
-    color: white;
-    font-family: 'Vidaloka', serif;
-    font-size: 1.5em;
-    padding: 5px;
+.card-link {
+  text-decoration: none;
+  color: white;
+  font-family: "Vidaloka", serif;
+  font-weight: 600;
+  font-size: 1.2em;
+  padding: 5px;
+  cursor: pointer;
 }
+
+.card-desc {
+  position: relative;
+  height: 70px;
+}
+.card-text {
+  height: 35px;
+  overflow: hidden;
+  width: 300px;
+  position: relative;
+  padding: 0 5px;
+}
+
+.card-text::after {
+  position: absolute;
+  content: "";
+  height: 60px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 0) 17%,
+    rgba(40, 36, 41, 0.775508) 59%,
+    rgba(40, 36, 41, 1) 100%
+  );
+}
+
+.card-text:hover {
+  z-index: 1;
+  height: 100%;
+  transition: height .25s ease-in;
+  background-color: #282429;
+  cursor: pointer;
+}
+.card-text:hover:after {
+  background: none;
+}
+
+.card-text2 {
+  width: 300px;
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  bottom: 0;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  color: white;
+  padding-bottom: 5px;
+}
+.card-text2 p {
+  margin: 5px;
+}
+
+

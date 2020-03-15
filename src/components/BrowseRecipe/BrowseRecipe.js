@@ -14,16 +14,19 @@ export default class BrowseRecipe extends Component {
       .then(result => this.context.buildIngred(result.extendedIngredients))
   }
   renderIngredients = () => {
+    console.log(this.context.ingredients)
     return <ul className='ingredients'>
-      {this.context.ingredients.map(ingred => {
+      {this.context.ingredients.map((ingred, index) => {
+        console.log('index: ', index)
         return (
-        <li>{ingred.amount} {ingred.unit} {ingred.name}</li>
+        <li key={index}>{ingred.amount} {ingred.unit} {ingred.name}</li>
         )
       })}
     </ul>
   }
 
   render() {
+    console.log('inside single recipe page')
     return (
       <div>
         <h2> Single Recipe Page</h2>

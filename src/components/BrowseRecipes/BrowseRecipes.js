@@ -31,12 +31,12 @@ export default class BrowseRecipes extends Component {
 
   renderRecipeCards = () => {
     return this.context.result.map(result => (
-      <RecipeList key={result.id} id={result.id} title={result.title} />
+      <RecipeList key={result.id} id={result.id} title={result.title} minutes={result.readyInMinutes} servings={result.servings}/>
     ));
   };
 
   componentDidMount = () => {
-    this.context.clearResults()
+    this.context.clearData()
   }
   render() {
     return (
