@@ -24,7 +24,7 @@ export default class BrowseRecipe extends Component {
         {this.context.ingredients.map((ingred, index) => {
           return (
             <li key={index}>
-              {ingred.amount} {ingred.unit} {ingred.name}
+              <span>{ingred.amount} {ingred.unit}</span> {ingred.name}
             </li>
           );
         })}
@@ -39,7 +39,7 @@ export default class BrowseRecipe extends Component {
         {this.context.instructions.map((instruction, index) => {
           return (
             <li key={index}>
-              {instruction.number}. {instruction.step}
+              <span>{instruction.number}.</span> {instruction.step}
             </li>
           );
         })}
@@ -51,6 +51,11 @@ export default class BrowseRecipe extends Component {
     return (
       <div>
         <h2> Single Recipe Page</h2>
+        <img
+          className="card-img"
+          src={`https://spoonacular.com/recipeImages/${this.props.match.params.id}-480x360.jpg`}
+          alt={`recipe`}
+        />
         <div className="ingredients">
           {this.context.ingredients ? this.renderIngredients() : null}
         </div>
