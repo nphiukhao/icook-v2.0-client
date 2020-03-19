@@ -5,18 +5,38 @@ font-family: 'Raleway', sans-serif; */
   list-style-type: none;
   font-family: 'Raleway', sans-serif;
   text-align: left;
+  font-size: 18px;
+  padding: 2px 0;
 }
 .ingredients span {
   font-size: 20px;
+  letter-spacing: .5px;
 }
 
+.instructions, .ingredients{
+  padding: 10px;
+  /* margin: auto; */
+}
 .instructions li {
   list-style-type: none;
   font-family: 'Raleway', sans-serif;
   text-align: left;
+  position: relative;
+  padding-bottom: 10px;
+  font-size: 18px;
 }
 .instructions span {
-  font-size: 25px;
+  /* position: absolute;
+  left: 0;
+  top: 0; */
+  font-size: 40px;
   font-family: 'Raleway', sans-serif;
+  padding-right: 5px;
+}
+
+h3{
+  font-family: 'Vidaloka', serif;
+  padding: 0;
+  font-size: 40px;
 }
 

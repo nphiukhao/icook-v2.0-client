@@ -49,17 +49,19 @@ export default class BrowseRecipe extends Component {
 
   render() {
     return (
-      <div>
+      <div className="recipe-container">
         <h2> Single Recipe Page</h2>
         <img
           className="card-img"
-          src={`https://spoonacular.com/recipeImages/${this.props.match.params.id}-480x360.jpg`}
+          src={`https://spoonacular.com/recipeImages/${this.props.match.params.id}-312x231.jpg`}
           alt={`recipe`}
         />
         <div className="ingredients">
+          <h3>Ingredients:</h3>
           {this.context.ingredients ? this.renderIngredients() : null}
         </div>
         <div className="instructions">
+          <h3>Steps:</h3>
           {this.context.instructions ? this.renderInstructions() : null}
         </div>
       </div>
