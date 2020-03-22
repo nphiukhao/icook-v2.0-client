@@ -1,33 +1,34 @@
 import React, { Component } from "react";
 import SpoonContext from "../../context/SpoonContext";
 import config from "../../config";
+import BrowseService from "../../services/BrowseService"
 import RecipeList from "../RecipeList/RecipeList";
 import './BrowseRecipes.css'
 
 export default class BrowseRecipes extends Component {
-  state = {
-    query: "",
-    cuisine: null,
-    diet: null
-  };
+  // state = {
+  //   query: "",
+  //   cuisine: null,
+  //   diet: null
+  // };
 
   static contextType = SpoonContext;
 
-  updateSearch = (e, searchParam) => {
-    this.setState({ [searchParam]: e.target.value });
-  };
-  searchQuery = e => {
-    e.preventDefault();
-    // console.log("calling query call", this.state);
+  // updateSearch = (e, searchParam) => {
+  //   this.setState({ [searchParam]: e.target.value });
+  // };
+  // searchQuery = e => {
+  //   e.preventDefault();
+  //   // console.log("calling query call", this.state);
 
-    fetch(
-      `https://api.spoonacular.com/recipes/search?query=${this.state.query}&number=12&apiKey=90983f8a705146c39a2acfcb0c8b7f28`
-    )
-      .then(res =>
-        !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-      )
-      .then(result => this.context.setResults(result.results));
-  };
+  //   fetch(
+  //     `https://api.spoonacular.com/recipes/search?query=${this.state.query}&number=12&apiKey=90983f8a705146c39a2acfcb0c8b7f28`
+  //   )
+  //     .then(res =>
+  //       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+  //     )
+  //     .then(result => this.context.setResults(result.results));
+  // };
 
   renderRecipeCards = () => {
     return this.context.result.map(result => (
@@ -36,7 +37,13 @@ export default class BrowseRecipes extends Component {
   };
 
   componentDidMount = () => {
-    this.context.clearData()
+    console.log("COMPONENET DID MOUNT")
+    if(this.context.query === "") {
+      this.context.clearData();
+    } else {
+      BrowseService.getResult(this.context.query).then(result => this.context.setResults(result.results));
+    }
+    
   }
   render() {
     return (
@@ -47,9 +54,9 @@ export default class BrowseRecipes extends Component {
             type="text"
             id="search-box"
             name="search-box"
-            onChange={e => this.updateSearch(e, "query")}
+            onChange={e => this.context.updateSearch(e, "query")}
           ></input>
-          <button onClick={e => this.searchQuery(e)}>search</button>
+          <button onClick={e => this.context.searchQuery(e)}>search</button>
         </form>
         <div className="results">
           {this.context.result === [] ? null : this.renderRecipeCards()}

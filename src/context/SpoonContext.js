@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import BrowseService from "../services/BrowseService"
 
 export const spoonsRecipe = {
+  query: "",
+  // cuisine: null,
+  // diet: null,
   result: [],
   recipeInfo: [],
   ingredients: [],
@@ -23,6 +27,9 @@ export default SpoonContext;
 
 export class SpoonProvider extends Component {
   state = {
+    query: "",
+    // cuisine: null,
+    // diet: null,
     result: [],
     recipeInfo: {
       title: "",
@@ -32,9 +39,28 @@ export class SpoonProvider extends Component {
     ingredients: [],
     instructions: []
   };
+
+  updateSearch = (e, searchParam) => {
+    this.setState({ [searchParam]: e.target.value });
+  };
+
+  searchQuery = e => {
+    e.preventDefault();
+    console.log("calling query call", this.state);
+
+
+    // fetch(
+    //   `https://api.spoonacular.com/recipes/search?query=${this.state.query}&number=12&apiKey=90983f8a705146c39a2acfcb0c8b7f28`
+    // )
+    //   .then(res =>
+    //     !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    //   )
+    BrowseService.getResult(this.state.query).then(result => this.setResults(result.results));
+    console.log(this.state.result)
+  };
+
   setResults = results => {
     this.setState({ result: results });
-    
   };
 
   clearData = () => {
@@ -44,7 +70,6 @@ export class SpoonProvider extends Component {
     })
   }
   updateIngredients = result => {
-    console.log("setting the state of ingreds", result);
     this.setState({
       ingredients: result
     });
@@ -73,9 +98,12 @@ export class SpoonProvider extends Component {
 
   render() {
     const value = {
+      query: this.state.query,
       result: this.state.result,
       ingredients: this.state.ingredients,
       instructions: this.state.instructions,
+      updateSearch: this.updateSearch,
+      searchQuery: this.searchQuery,
       setResults: this.setResults,
       clearData: this.clearData,
       updateIngredients: this.updateIngredients,
