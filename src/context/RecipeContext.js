@@ -82,10 +82,12 @@ export class RecipeProvider extends Component {
     });
   };
 
-  handleClientUpdate = newMins => {
+  handleClientUpdate = (field, newData) => {
+    console.log(field, newData)
     this.setState({
-      minutes: newMins
+      [field]: newData
     });
+    console.log('updating new data', this.state)
   };
   clearRecipeArray = () => {
     this.setState({ recipeArray: [] });

@@ -1,22 +1,26 @@
 import React, { Component } from "react";
-import BrowseService from "../services/BrowseService"
+import BrowseService from "../services/BrowseService";
 
 export const spoonsRecipe = {
   query: "",
+  offset: 0,
   // cuisine: null,
   // diet: null,
   result: [],
   recipeInfo: [],
   ingredients: [],
-  instructions: []
+  instructions: [],
 };
 
 const SpoonContext = React.createContext({
+  query: "",
+  offset: 0,
   result: [],
   recipeInfo: [],
   ingredients: [],
   instructions: [],
   setResults: () => {},
+  changeOffset: () => {},
   clearData: () => {},
   updateIngredients: () => {},
   updateInstructions: () => {},
@@ -30,85 +34,107 @@ export class SpoonProvider extends Component {
     query: "",
     // cuisine: null,
     // diet: null,
+    offset: 0,
     result: [],
     recipeInfo: {
       title: "",
       summary: "",
-      minutes: ""
+      minutes: "",
+      vegetarian: null,
+      vegan: null,
+      glutonFree: null,
+      dairyFree: null,
     },
     ingredients: [],
-    instructions: []
+    instructions: [],
   };
 
   updateSearch = (e, searchParam) => {
+    //query
     this.setState({ [searchParam]: e.target.value });
   };
 
-  searchQuery = e => {
+  searchQuery = (e) => {
+    console.log("searchQuert firing")
     e.preventDefault();
-    console.log("calling query call", this.state);
-
-
-    // fetch(
-    //   `https://api.spoonacular.com/recipes/search?query=${this.state.query}&number=12&apiKey=90983f8a705146c39a2acfcb0c8b7f28`
-    // )
-    //   .then(res =>
-    //     !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-    //   )
-    BrowseService.getResult(this.state.query).then(result => this.setResults(result.results));
-    console.log(this.state.result)
+    BrowseService.getResult(this.state.query, this.state.offset).then((result) =>
+      this.setResults(result.results)
+    );
+    //console.log(this.state.result);
   };
 
-  setResults = results => {
+  changeOffset = (e, value) => {
+    console.log('offsetworking', this.state.offset)
+    e.preventDefault();
+    if (value === "next") {
+      this.setState((state) => {
+        return { offset: state.offset + 12 };
+      });
+      this.searchQuery(e)
+    } else if (value === "prev" && this.state.offset >= 12) {
+      this.setState((state) => {
+        return { offset: state.offset - 12 };
+      });
+      this.searchQuery(e)
+    }
+  };
+
+  setResults = (results) => {
     this.setState({ result: results });
+    console.log("setting results")
   };
 
   clearData = () => {
     this.setState({
       result: [],
-      ingredients: []
-    })
-  }
-  updateIngredients = result => {
-    this.setState({
-      ingredients: result
+      ingredients: [],
     });
   };
 
-  buildIngred = ingredResult => {
+  setRecipeInfo = (info, value) => {
+    this.setState({ [info]: value });
+  };
+  updateIngredients = (result) => {
+    this.setState({
+      ingredients: result,
+    });
+  };
+
+  buildIngred = (ingredResult) => {
     let ingredientsArr = [];
-    ingredResult.forEach(ingred => {
+    ingredResult.forEach((ingred) => {
       ingredientsArr.push({
         name: ingred.name,
         amount: ingred.measures.us.amount,
-        unit: ingred.measures.us.unitShort
+        unit: ingred.measures.us.unitShort,
       });
     });
     this.updateIngredients(ingredientsArr);
   };
 
-  updateInstructions = instructions => {
-    console.log('updating instructions', instructions);
+  updateInstructions = (instructions) => {
+    // console.log('updating instructions', instructions);
     this.setState({
-      instructions:instructions
-    })
-    console.log('this is instructions in state',this.state.instructions)
-  }
-
+      instructions: instructions,
+    });
+    // console.log('this is instructions in state',this.state.instructions)
+  };
 
   render() {
     const value = {
       query: this.state.query,
+      offset: this.state.offset,
       result: this.state.result,
       ingredients: this.state.ingredients,
       instructions: this.state.instructions,
       updateSearch: this.updateSearch,
       searchQuery: this.searchQuery,
+      changeOffset: this.changeOffset,
       setResults: this.setResults,
       clearData: this.clearData,
       updateIngredients: this.updateIngredients,
       updateInstructions: this.updateInstructions,
-      buildIngred: this.buildIngred
+      buildIngred: this.buildIngred,
     };
     return (
       <SpoonContext.Provider value={value}>

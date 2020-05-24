@@ -16,6 +16,7 @@ export default class BrowseRecipe extends Component {
       .then(result => {
         this.context.buildIngred(result.extendedIngredients);
         this.context.updateInstructions(result.analyzedInstructions[0].steps);
+        //this.context.
       });
   }
   renderIngredients = () => {
