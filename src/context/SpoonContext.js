@@ -25,6 +25,7 @@ const SpoonContext = React.createContext({
   updateIngredients: () => {},
   updateInstructions: () => {},
   buildIngred: () => {},
+  setRecipeInfo: () => {}
 });
 
 export default SpoonContext;
@@ -38,11 +39,11 @@ export class SpoonProvider extends Component {
     result: [],
     recipeInfo: {
       title: "",
-      summary: "",
-      minutes: "",
+      readyInMinutes: "",
+      servings: "",
       vegetarian: null,
       vegan: null,
-      glutonFree: null,
+      glutenFree: null,
       dairyFree: null,
     },
     ingredients: [],
@@ -91,8 +92,20 @@ export class SpoonProvider extends Component {
     });
   };
 
-  setRecipeInfo = (info, value) => {
-    this.setState({ [info]: value });
+  setRecipeInfo = (result) => {
+    console.log("RESULT ->", result)
+    let {title, readyInMinutes, servings, vegan, vegetarian, glutenFree, dairyFree} = result
+    let recipeInfo = {
+      title,
+      readyInMinutes,
+      servings,
+      vegan,
+      vegetarian,
+      glutenFree,
+      dairyFree
+    }
+    this.setState({recipeInfo})
+    console.log(this.state.recipeInfo)
   };
   updateIngredients = (result) => {
     this.setState({
@@ -120,11 +133,14 @@ export class SpoonProvider extends Component {
     // console.log('this is instructions in state',this.state.instructions)
   };
 
+
+
   render() {
     const value = {
       query: this.state.query,
       offset: this.state.offset,
       result: this.state.result,
+      recipeInfo: this.state.recipeInfo,
       ingredients: this.state.ingredients,
       instructions: this.state.instructions,
       updateSearch: this.updateSearch,
@@ -135,6 +151,7 @@ export class SpoonProvider extends Component {
       updateIngredients: this.updateIngredients,
       updateInstructions: this.updateInstructions,
       buildIngred: this.buildIngred,
+      setRecipeInfo: this.setRecipeInfo
     };
     return (
       <SpoonContext.Provider value={value}>
