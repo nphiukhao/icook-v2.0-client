@@ -44,7 +44,7 @@ export default class BrowseRecipes extends Component {
   };
 
   componentDidMount = () => {
-    console.log("COMPONENET DID MOUNT in BrowseRecipes");
+    //console.log("COMPONENET DID MOUNT in BrowseRecipes");
     if (this.context.query === "") {
       this.context.clearData();
     } else {
@@ -54,6 +54,8 @@ export default class BrowseRecipes extends Component {
     }
   };
   render() {
+
+    console.log("Rendering, should happen everytime offset is changed")
     return (
       <div className="browse-container">
         <form>

@@ -10,7 +10,7 @@ export default class BrowseRecipe extends Component {
   componentDidMount() {
     let id = this.props.match.params.id;
     fetch(
-      `https://api.spoonacular.com/recipes/${id}/information?apiKey=90983f8a705146c39a2acfcb0c8b7f28`
+      `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_SPOON}`
     )
       .then((res) =>
         !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
@@ -18,7 +18,10 @@ export default class BrowseRecipe extends Component {
       .then((result) => {
         this.context.setRecipeInfo(result);
         this.context.buildIngred(result.extendedIngredients);
-        this.context.updateInstructions(result.analyzedInstructions[0].steps);
+        if(result.analyzedInstructions.length !== 0) {
+          this.context.updateInstructions(result.analyzedInstructions[0].steps);
+        };
+        
       });
   }
   renderIngredients = () => {

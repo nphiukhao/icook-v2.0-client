@@ -20,12 +20,14 @@ const SpoonContext = React.createContext({
   ingredients: [],
   instructions: [],
   setResults: () => {},
+  searchQuery: () => {},
+  getResult: () => {},
   changeOffset: () => {},
   clearData: () => {},
   updateIngredients: () => {},
   updateInstructions: () => {},
   buildIngred: () => {},
-  setRecipeInfo: () => {}
+  setRecipeInfo: () => {},
 });
 
 export default SpoonContext;
@@ -56,33 +58,39 @@ export class SpoonProvider extends Component {
   };
 
   searchQuery = (e) => {
-    console.log("searchQuert firing")
     e.preventDefault();
-    BrowseService.getResult(this.state.query, this.state.offset).then((result) =>
-      this.setResults(result.results)
-    );
-    //console.log(this.state.result);
+    this.getResult();
+  };
+
+  getResult = () => {
+
+    const getResultAPI = async () => {
+      let result = await BrowseService.getResult(
+        this.state.query,
+        this.state.offset
+      );
+      this.setResults(result.results);
+    };
+
+    getResultAPI();
   };
 
   changeOffset = (e, value) => {
-    console.log('offsetworking', this.state.offset)
     e.preventDefault();
     if (value === "next") {
       this.setState((state) => {
         return { offset: state.offset + 12 };
-      });
-      this.searchQuery(e)
+      }, this.getResult);
     } else if (value === "prev" && this.state.offset >= 12) {
       this.setState((state) => {
         return { offset: state.offset - 12 };
-      });
-      this.searchQuery(e)
+      }, this.getResult);
     }
   };
 
   setResults = (results) => {
     this.setState({ result: results });
-    console.log("setting results")
+    console.log("setting results");
   };
 
   clearData = () => {
@@ -93,8 +101,16 @@ export class SpoonProvider extends Component {
   };
 
   setRecipeInfo = (result) => {
-    console.log("RESULT ->", result)
-    let {title, readyInMinutes, servings, vegan, vegetarian, glutenFree, dairyFree} = result
+    console.log("RESULT ->", result);
+    let {
+      title,
+      readyInMinutes,
+      servings,
+      vegan,
+      vegetarian,
+      glutenFree,
+      dairyFree,
+    } = result;
     let recipeInfo = {
       title,
       readyInMinutes,
@@ -102,10 +118,10 @@ export class SpoonProvider extends Component {
       vegan,
       vegetarian,
       glutenFree,
-      dairyFree
-    }
-    this.setState({recipeInfo})
-    console.log(this.state.recipeInfo)
+      dairyFree,
+    };
+    this.setState({ recipeInfo });
+    console.log(this.state.recipeInfo);
   };
   updateIngredients = (result) => {
     this.setState({
@@ -133,8 +149,6 @@ export class SpoonProvider extends Component {
     // console.log('this is instructions in state',this.state.instructions)
   };
 
-
-
   render() {
     const value = {
       query: this.state.query,
@@ -145,13 +159,14 @@ export class SpoonProvider extends Component {
       instructions: this.state.instructions,
       updateSearch: this.updateSearch,
       searchQuery: this.searchQuery,
+      getResult: this.getResult,
       changeOffset: this.changeOffset,
       setResults: this.setResults,
       clearData: this.clearData,
       updateIngredients: this.updateIngredients,
       updateInstructions: this.updateInstructions,
       buildIngred: this.buildIngred,
-      setRecipeInfo: this.setRecipeInfo
+      setRecipeInfo: this.setRecipeInfo,
     };
     return (
       <SpoonContext.Provider value={value}>

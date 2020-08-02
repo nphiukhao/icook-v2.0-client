@@ -1,8 +1,8 @@
 const BrowseService = {
   getResult(query, offset) {
-    console.log("FETCHING RESULTS API")
+    console.log("FETCHING RESULTS API, oofset:", offset)
     return fetch(
-      `https://api.spoonacular.com/recipes/search?query=${query}&number=12&offset=${offset}&apiKey=90983f8a705146c39a2acfcb0c8b7f28`
+      `https://api.spoonacular.com/recipes/search?query=${query}&number=12&offset=${offset}&apiKey=${process.env.REACT_APP_SPOON}`
     ).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
