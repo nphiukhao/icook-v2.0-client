@@ -6,6 +6,47 @@
   align-items: center;
 }
 
+.browse-container form {
+  padding-top: 50px;
+}
+
+.browse-container label {
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  color: white;
+  display: block;
+}
+
+.searchBar {
+  width: 280px;
+  position: relative;
+  margin-top: 15px;
+}
+
+.browse-container input {
+  border: none;
+  background: white;
+  width: 100%;
+  height: 38px;
+  border-radius: 5px;
+  font-family: "Raleway", sans-serif;
+  font-size: 17px;
+  padding-left: 15px;
+}
+
+.searchBar button {
+  display: inline-block;
+  left: 50px;
+  background: white;
+  border: 0;
+  border-radius: 5px;
+  color: grey;
+  position: absolute;
+  width: 50px;
+  height: 38px;
+  left: 230px;
+  z-index: 1;
+}
 
 .result {
   display: flex;
@@ -15,13 +56,28 @@
   margin: 0;
 }
 
+.pages button {
+  margin: 15px 5px;
+  border: 1px solid white;
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  color: white;
+  background: rgba(92, 146, 85);
+
+}
+
+
 @media (min-width: 700px) {
   .recipe-card {
     margin: 10px;
   }
   .results {
     display: grid;
-    grid-template-columns: auto auto ;
+    grid-template-columns: auto auto;
     padding: 10px;
   }
 }
@@ -35,6 +91,5 @@
 @media (min-width: 1400px) {
   .results {
     grid-template-columns: auto auto auto auto;
-
   }
 }

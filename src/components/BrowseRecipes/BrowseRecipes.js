@@ -4,6 +4,8 @@ import config from "../../config";
 import BrowseService from "../../services/BrowseService";
 import RecipeList from "../RecipeList/RecipeList";
 import Pagination from "../Pagination/Pagination";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./BrowseRecipes.css";
 
 export default class BrowseRecipes extends Component {
@@ -48,30 +50,40 @@ export default class BrowseRecipes extends Component {
     if (this.context.query === "") {
       this.context.clearData();
     } else {
-      BrowseService.getResult(this.context.query, this.context.offset).then((result) =>
-        this.context.setResults(result.results)
-      );
+      BrowseService.getResult(
+        this.context.query,
+        this.context.offset
+      ).then((result) => this.context.setResults(result.results));
     }
   };
   render() {
-
-    console.log("Rendering, should happen everytime offset is changed")
+    console.log("Rendering, should happen everytime offset is changed");
     return (
       <div className="browse-container">
         <form>
-          <label htmlFor="search-box">Search</label>
-          <input
-            type="text"
-            id="search-box"
-            name="search-box"
-            onChange={(e) => this.context.updateSearch(e, "query")}
-          ></input>
-          <button onClick={(e) => this.context.searchQuery(e)}>search</button>
+          <label htmlFor="search-box">lookup some recipes!</label>
+          <div className="searchBar">
+            <input
+              type="search"
+              id="search-box"
+              name="search-box"
+              placeholder="i.e. Blueberry Pie"
+              onChange={(e) => this.context.updateSearch(e, "query")}
+            ></input>
+            <button onClick={(e) => this.context.searchQuery(e)}>
+              <FontAwesomeIcon icon={faSearch} size="2x"></FontAwesomeIcon>
+            </button>
+          </div>
+          <div className="advanceSearch">
+
+          </div>
         </form>
         <div className="results">
           {this.context.result.length === 0 ? null : this.renderRecipeCards()}
         </div>
-        {this.context.result.length === 0 ? null : <Pagination context={this.context}/>}
+        {this.context.result.length === 0 ? null : (
+          <Pagination context={this.context} />
+        )}
       </div>
     );
   }
