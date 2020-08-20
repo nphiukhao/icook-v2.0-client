@@ -9,11 +9,10 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./BrowseRecipes.css";
 
 export default class BrowseRecipes extends Component {
-  // state = {
-  //   query: "",
-  //   cuisine: null,
-  //   diet: null
-  // };
+  state = {
+    showAS: false,
+    diet: ""
+  };
 
   static contextType = SpoonContext;
 
@@ -33,6 +32,21 @@ export default class BrowseRecipes extends Component {
   //     .then(result => this.context.setResults(result.results));
   // };
 
+  toggleAS = (e) => {
+    e.preventDefault()
+    this.setState({
+      showAS: !this.state.showAS
+    })
+  }
+
+  setDiet = (e, diet) => {
+    e.preventDefault()
+    //console.log("set diet", diet, e.target.value)
+    this.setState({
+      [diet]: e.target.value
+    })
+  }
+
   renderRecipeCards = () => {
     return this.context.result.map((result) => (
       <RecipeList
@@ -44,6 +58,25 @@ export default class BrowseRecipes extends Component {
       />
     ));
   };
+
+  renderAS = () => {
+    return <>
+    <h4>Diet</h4>
+    <div className="dietFilters">
+      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Gluton Free" ? "rgba(92, 146, 85)" : "white"}`}} value="Gluton Free">Gluten Free</button>
+      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Ketogenic" ? "rgba(92, 146, 85)" : "white"}`}} value="Ketogenic">Ketogenic</button>
+      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Vegetarian" ? "rgba(92, 146, 85)" : "white"}`}} value="Vegetarian">Vegetarian</button>
+      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Lacto-Vegetarian" ? "rgba(92, 146, 85)" : "white"}`}} value="Lacto-Vegetarian">Lacto-Vegetarian</button>
+      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Ovo-Vegetarian" ? "rgba(92, 146, 85)" : "white"}`}} value="Ovo-Vegetarian">Ovo-Vegetarian</button>
+      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Vegan" ? "rgba(92, 146, 85)" : "white"}`}} value="Vegan">Vegan</button>
+      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Pescetarian" ? "rgba(92, 146, 85)" : "white"}`}} value="Pescetarian">Pescetarian</button>
+      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Paleo" ? "rgba(92, 146, 85)" : "white"}`}} value="Paleo">Paleo</button>
+      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Primal" ? "rgba(92, 146, 85)" : "white"}`}} value="Primal">Primal</button>
+      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Whole30" ? "rgba(92, 146, 85)" : "white"}`}} value="Whole30">Whole30</button>
+    </div>
+    <button className="advanceSearchbutton" onClick={(e) => this.setDiet(e, "diet")} type="button" value="">reset diet</button>
+    </>
+  }
 
   componentDidMount = () => {
     //console.log("COMPONENET DID MOUNT in BrowseRecipes");
@@ -57,11 +90,11 @@ export default class BrowseRecipes extends Component {
     }
   };
   render() {
-    console.log("Rendering, should happen everytime offset is changed");
+    console.log("state diet =>", this.state.diet)
     return (
       <div className="browse-container">
         <form>
-          <label htmlFor="search-box">lookup some recipes!</label>
+          {/* <label htmlFor="search-box">lookup some recipes!</label> */}
           <div className="searchBar">
             <input
               type="search"
@@ -74,8 +107,9 @@ export default class BrowseRecipes extends Component {
               <FontAwesomeIcon icon={faSearch} size="2x"></FontAwesomeIcon>
             </button>
           </div>
-          <div className="advanceSearch">
-
+          <button className="advanceSearchbutton" type="button" onClick={e => this.toggleAS(e)}> advance search </button>
+          <div>
+            {this.state.showAS ? this.renderAS() : null}
           </div>
         </form>
         <div className="results">
