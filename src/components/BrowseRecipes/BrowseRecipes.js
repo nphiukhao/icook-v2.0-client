@@ -11,41 +11,16 @@ import "./BrowseRecipes.css";
 export default class BrowseRecipes extends Component {
   state = {
     showAS: false,
-    diet: ""
   };
 
   static contextType = SpoonContext;
 
-  // updateSearch = (e, searchParam) => {
-  //   this.setState({ [searchParam]: e.target.value });
-  // };
-  // searchQuery = e => {
-  //   e.preventDefault();
-  //   // console.log("calling query call", this.state);
-
-  //   fetch(
-  //     `https://api.spoonacular.com/recipes/search?query=${this.state.query}&number=12&apiKey=90983f8a705146c39a2acfcb0c8b7f28`
-  //   )
-  //     .then(res =>
-  //       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-  //     )
-  //     .then(result => this.context.setResults(result.results));
-  // };
-
   toggleAS = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     this.setState({
-      showAS: !this.state.showAS
-    })
-  }
-
-  setDiet = (e, diet) => {
-    e.preventDefault()
-    //console.log("set diet", diet, e.target.value)
-    this.setState({
-      [diet]: e.target.value
-    })
-  }
+      showAS: !this.state.showAS,
+    });
+  };
 
   renderRecipeCards = () => {
     return this.context.result.map((result) => (
@@ -60,23 +35,154 @@ export default class BrowseRecipes extends Component {
   };
 
   renderAS = () => {
-    return <>
-    <h4>Diet</h4>
-    <div className="dietFilters">
-      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Gluton Free" ? "rgba(92, 146, 85)" : "white"}`}} value="Gluton Free">Gluten Free</button>
-      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Ketogenic" ? "rgba(92, 146, 85)" : "white"}`}} value="Ketogenic">Ketogenic</button>
-      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Vegetarian" ? "rgba(92, 146, 85)" : "white"}`}} value="Vegetarian">Vegetarian</button>
-      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Lacto-Vegetarian" ? "rgba(92, 146, 85)" : "white"}`}} value="Lacto-Vegetarian">Lacto-Vegetarian</button>
-      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Ovo-Vegetarian" ? "rgba(92, 146, 85)" : "white"}`}} value="Ovo-Vegetarian">Ovo-Vegetarian</button>
-      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Vegan" ? "rgba(92, 146, 85)" : "white"}`}} value="Vegan">Vegan</button>
-      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Pescetarian" ? "rgba(92, 146, 85)" : "white"}`}} value="Pescetarian">Pescetarian</button>
-      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Paleo" ? "rgba(92, 146, 85)" : "white"}`}} value="Paleo">Paleo</button>
-      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Primal" ? "rgba(92, 146, 85)" : "white"}`}} value="Primal">Primal</button>
-      <button onClick={(e) => this.setDiet(e, "diet")} type="button" style={{background: `${this.state.diet === "Whole30" ? "rgba(92, 146, 85)" : "white"}`}} value="Whole30">Whole30</button>
-    </div>
-    <button className="advanceSearchbutton" onClick={(e) => this.setDiet(e, "diet")} type="button" value="">reset diet</button>
-    </>
-  }
+    return (
+      <>
+        <h4>Diet</h4>
+        <div className="dietFilters">
+          <button
+            onClick={(e) => this.context.setDiet(e, "diet")}
+            type="button"
+            style={{
+              background: `${
+                this.context.diet === "Gluton Free"
+                  ? "rgba(92, 146, 85)"
+                  : "white"
+              }`,
+            }}
+            value="Gluton Free"
+          >
+            Gluten Free
+          </button>
+          <button
+            onClick={(e) => this.context.setDiet(e, "diet")}
+            type="button"
+            style={{
+              background: `${
+                this.context.diet === "Ketogenic"
+                  ? "rgba(92, 146, 85)"
+                  : "white"
+              }`,
+            }}
+            value="Ketogenic"
+          >
+            Ketogenic
+          </button>
+          <button
+            onClick={(e) => this.context.setDiet(e, "diet")}
+            type="button"
+            style={{
+              background: `${
+                this.context.diet === "Vegetarian"
+                  ? "rgba(92, 146, 85)"
+                  : "white"
+              }`,
+            }}
+            value="Vegetarian"
+          >
+            Vegetarian
+          </button>
+          <button
+            onClick={(e) => this.context.setDiet(e, "diet")}
+            type="button"
+            style={{
+              background: `${
+                this.context.diet === "Lacto-Vegetarian"
+                  ? "rgba(92, 146, 85)"
+                  : "white"
+              }`,
+            }}
+            value="Lacto-Vegetarian"
+          >
+            Lacto-Vegetarian
+          </button>
+          <button
+            onClick={(e) => this.context.setDiet(e, "diet")}
+            type="button"
+            style={{
+              background: `${
+                this.context.diet === "Ovo-Vegetarian"
+                  ? "rgba(92, 146, 85)"
+                  : "white"
+              }`,
+            }}
+            value="Ovo-Vegetarian"
+          >
+            Ovo-Vegetarian
+          </button>
+          <button
+            onClick={(e) => this.context.setDiet(e, "diet")}
+            type="button"
+            style={{
+              background: `${
+                this.context.diet === "Vegan" ? "rgba(92, 146, 85)" : "white"
+              }`,
+            }}
+            value="Vegan"
+          >
+            Vegan
+          </button>
+          <button
+            onClick={(e) => this.context.setDiet(e, "diet")}
+            type="button"
+            style={{
+              background: `${
+                this.context.diet === "Pescetarian"
+                  ? "rgba(92, 146, 85)"
+                  : "white"
+              }`,
+            }}
+            value="Pescetarian"
+          >
+            Pescetarian
+          </button>
+          <button
+            onClick={(e) => this.context.setDiet(e, "diet")}
+            type="button"
+            style={{
+              background: `${
+                this.context.diet === "Paleo" ? "rgba(92, 146, 85)" : "white"
+              }`,
+            }}
+            value="Paleo"
+          >
+            Paleo
+          </button>
+          <button
+            onClick={(e) => this.context.setDiet(e, "diet")}
+            type="button"
+            style={{
+              background: `${
+                this.context.diet === "Primal" ? "rgba(92, 146, 85)" : "white"
+              }`,
+            }}
+            value="Primal"
+          >
+            Primal
+          </button>
+          <button
+            onClick={(e) => this.context.setDiet(e, "diet")}
+            type="button"
+            style={{
+              background: `${
+                this.context.diet === "Whole30" ? "rgba(92, 146, 85)" : "white"
+              }`,
+            }}
+            value="Whole30"
+          >
+            Whole30
+          </button>
+        </div>
+        <button
+          className="advanceSearchbutton"
+          onClick={(e) => this.context.setDiet(e, "diet")}
+          type="button"
+          value=""
+        >
+          reset diet
+        </button>
+      </>
+    );
+  };
 
   componentDidMount = () => {
     //console.log("COMPONENET DID MOUNT in BrowseRecipes");
@@ -85,12 +191,13 @@ export default class BrowseRecipes extends Component {
     } else {
       BrowseService.getResult(
         this.context.query,
-        this.context.offset
+        this.context.offset,
+        this.context.diet
       ).then((result) => this.context.setResults(result.results));
     }
   };
   render() {
-    console.log("state diet =>", this.state.diet)
+    console.log("IN COMPONENT", this.context.totalResults);
     return (
       <div className="browse-container">
         <form>
@@ -107,16 +214,22 @@ export default class BrowseRecipes extends Component {
               <FontAwesomeIcon icon={faSearch} size="2x"></FontAwesomeIcon>
             </button>
           </div>
-          <button className="advanceSearchbutton" type="button" onClick={e => this.toggleAS(e)}> advance search </button>
-          <div>
-            {this.state.showAS ? this.renderAS() : null}
-          </div>
+          <button
+            className="advanceSearchbutton"
+            type="button"
+            onClick={(e) => this.toggleAS(e)}
+          >
+            {" "}
+            advance search{" "}
+          </button>
+          <div>{this.state.showAS ? this.renderAS() : null}</div>
         </form>
+        <h4>total results: {this.context.totalResults} recipes</h4>
         <div className="results">
           {this.context.result.length === 0 ? null : this.renderRecipeCards()}
         </div>
-        {this.context.result.length === 0 ? null : (
-          <Pagination context={this.context} />
+        {(this.context.result.length === 0 || this.context.totalResults <= 12) ? null : (
+          <Pagination context={this.context}/>
         )}
       </div>
     );
